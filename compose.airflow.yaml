@@ -1,0 +1,43 @@
+services:
+  airflow:
+    build:
+      context: .
+      dockerfile: Dockerfile.airflow
+
+    image: paysim-airflow:latest
+    container_name: paysim-airflow
+    command: standalone
+
+    environment:
+      AIRFLOW_HOME: /opt/airflow/home
+      AIRFLOW__CORE__DAGS_FOLDER: /opt/airflow/dags
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__CORE__PARALLELISM: "2"
+      AIRFLOW__CORE__MAX_ACTIVE_TASKS_PER_DAG: "1"
+      AIRFLOW__CORE__MAX_ACTIVE_RUNS_PER_DAG: "1"
+      AIRFLOW__CORE__DAGBAG_IMPORT_TIMEOUT: "60"
+      AIRFLOW__LOGGING__BASE_LOG_FOLDER: /opt/airflow/logs
+      PYTHONPATH: /opt/airflow/project/src
+      PYSPARK_PYTHON: python3
+      PYSPARK_DRIVER_PYTHON: python3
+      JAVA_HOME: /usr/lib/jvm/default-java
+
+    ports:
+      - "8080:8080"
+
+    volumes:
+      - airflow-home:/opt/airflow/home
+      - ./airflow/dags:/opt/airflow/dags
+      - ./airflow/logs:/opt/airflow/logs
+      - ./airflow/plugins:/opt/airflow/plugins
+      - ./airflow/config:/opt/airflow/config
+      - ./src:/opt/airflow/project/src:ro
+      - ./data:/opt/airflow/project/data
+      - ./logs:/opt/airflow/project/logs
+      - ./spark-temp:/opt/airflow/project/spark-temp
+
+    restart: unless-stopped
+
+volumes:
+  airflow-home:

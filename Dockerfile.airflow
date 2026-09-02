@@ -1,0 +1,34 @@
+FROM apache/airflow:3.3.0
+
+USER root
+
+RUN apt-get update \
+    && apt-get install \
+        --yes \
+        --no-install-recommends \
+        default-jre-headless \
+        procps \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN mkdir -p \
+        /opt/airflow/home \
+        /opt/airflow/home/logs \
+    && chown -R airflow:root \
+        /opt/airflow/home \
+    && chmod -R 775 \
+        /opt/airflow/home
+
+ENV JAVA_HOME=/usr/lib/jvm/default-java
+ENV PYTHONPATH=/opt/airflow/project/src
+ENV PYSPARK_PYTHON=python3
+ENV PYSPARK_DRIVER_PYTHON=python3
+
+USER airflow
+
+COPY requirements-airflow.txt /tmp/requirements-airflow.txt
+
+RUN python -m pip install \
+    --no-cache-dir \
+    -r /tmp/requirements-airflow.txt
+
+WORKDIR /opt/airflow

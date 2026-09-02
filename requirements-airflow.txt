@@ -1,0 +1,4 @@
+apache-airflow==3.3.0
+pyspark==4.2.0
+pandas>=2.2,<3.0
+numpy>=1.26,<3.0

@@ -1,0 +1,36 @@
+services:
+  paysim-pipeline:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    image: paysim-financial-data-pipeline:latest
+
+    container_name: paysim-pipeline
+
+    environment:
+      PYTHONPATH: /app/src
+      PYSPARK_PYTHON: python3
+      PYSPARK_DRIVER_PYTHON: python3
+
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./spark-temp:/app/spark-temp
+
+    command:
+      - --input
+      - data/raw/PS_20174392719_1491204439457_log.csv
+      - --spark-master
+      - local[4]
+      - --driver-memory
+      - 6g
+      - --shuffle-partitions
+      - "64"
+      - --high-value-threshold
+      - "200000"
+      - --approx-distinct-rsd
+      - "0.05"
+      - --clear-summary-outputs
+      - --log-level
+      - INFO
