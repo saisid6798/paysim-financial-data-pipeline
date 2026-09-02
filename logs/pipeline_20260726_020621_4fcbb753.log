@@ -1,0 +1,33 @@
+2026-07-25 22:06:21 | INFO | paysim_pipeline | Starting PaySim pipeline
+2026-07-25 22:06:21 | INFO | paysim_pipeline | Pipeline run ID: 20260726_020621_4fcbb753
+2026-07-25 22:06:21 | INFO | paysim_pipeline | Project root: C:\Projects\paysim-financial-data-pipeline
+2026-07-25 22:06:21 | INFO | paysim_pipeline | Log file: C:\Projects\paysim-financial-data-pipeline\logs\pipeline_20260726_020621_4fcbb753.log
+2026-07-25 22:06:21 | INFO | paysim_pipeline | Pipeline configuration validated
+2026-07-25 22:06:21 | INFO | paysim_pipeline | Input file: C:\Projects\paysim-financial-data-pipeline\data\raw\PS_20174392719_1491204439457_log.csv
+2026-07-25 22:06:21 | INFO | paysim_pipeline | Deleted 7 previous summary CSV files
+2026-07-25 22:06:26 | INFO | paysim_pipeline | Spark session created
+2026-07-25 22:06:26 | INFO | paysim_pipeline | Spark version: 4.2.0
+2026-07-25 22:06:26 | INFO | paysim_pipeline | Spark master: local[4]
+2026-07-25 22:06:28 | INFO | paysim_pipeline | Bronze completed: 6,362,620 rows in 2.68 seconds
+2026-07-25 22:06:43 | INFO | paysim_pipeline | Silver completed: 6,362,620 rows in 15.26 seconds
+2026-07-25 22:06:43 | INFO | paysim_pipeline | Bronze-to-Silver reconciliation: PASS
+2026-07-25 22:06:44 | INFO | paysim_pipeline | Executing Gold table: daily_transaction_summary
+2026-07-25 22:06:48 | INFO | paysim_pipeline | Gold table daily_transaction_summary completed: 31 rows in 3.61 seconds
+2026-07-25 22:06:48 | INFO | paysim_pipeline | Executing Gold table: daily_type_summary
+2026-07-25 22:06:50 | INFO | paysim_pipeline | Gold table daily_type_summary completed: 152 rows in 2.25 seconds
+2026-07-25 22:06:50 | INFO | paysim_pipeline | Executing Gold table: hourly_fraud_summary
+2026-07-25 22:06:53 | INFO | paysim_pipeline | Gold table hourly_fraud_summary completed: 743 rows in 2.63 seconds
+2026-07-25 22:06:53 | INFO | paysim_pipeline | Executing Gold table: transaction_type_summary
+2026-07-25 22:06:55 | INFO | paysim_pipeline | Gold table transaction_type_summary completed: 5 rows in 1.62 seconds
+2026-07-25 22:06:55 | INFO | paysim_pipeline | Executing Gold table: high_value_summary
+2026-07-25 22:06:57 | INFO | paysim_pipeline | Gold table high_value_summary completed: 103 rows in 1.99 seconds
+2026-07-25 22:07:00 | INFO | paysim_pipeline | Daily reconciliation: PASS
+2026-07-25 22:07:00 | INFO | paysim_pipeline | Transaction-type reconciliation: PASS
+2026-07-25 22:07:00 | INFO | paysim_pipeline | Fraud reconciliation: PASS
+2026-07-25 22:07:00 | INFO | paysim_pipeline | Audit exported: C:\Projects\paysim-financial-data-pipeline\data\gold\pipeline_audit\pipeline_audit_20260726_020621_4fcbb753.csv
+2026-07-25 22:07:00 | INFO | paysim_pipeline | Summary exported: C:\Projects\paysim-financial-data-pipeline\data\gold\pipeline_audit\pipeline_summary_20260726_020621_4fcbb753.csv
+2026-07-25 22:07:00 | INFO | paysim_pipeline | Pipeline status: SUCCESS
+2026-07-25 22:07:00 | INFO | paysim_pipeline | Total execution time: 38.65 seconds
+2026-07-25 22:07:00 | INFO | paysim_pipeline | Releasing pipeline resources
+2026-07-25 22:07:00 | INFO | paysim_pipeline | Spark session stopped
+2026-07-25 22:07:00 | INFO | py4j.clientserver | Closing down clientserver connection
